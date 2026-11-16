@@ -17,19 +17,19 @@ Column {
     spacing: 8
 
     RoundButton {
-        id: settingsButton
+        id: powerButton
         width: 68
         height: 68
         enabled: root.powerOffEnabled
-        text: "⏻"
-        font.pixelSize: 36
-        font.family: "Noto Sans"
-        contentItem: Text {
-            text: parent.text
-            color: root.textColor
-            font: parent.font
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
+        Accessible.name: "Wyłącz komputer"
+        contentItem: Item {
+            ActionIcon {
+                anchors.centerIn: parent
+                width: 34
+                height: 34
+                iconName: "power"
+                iconColor: root.textColor
+            }
         }
         background: Rectangle {
             radius: 15
@@ -42,18 +42,18 @@ Column {
     }
 
     RoundButton {
-        id: powerButton
+        id: settingsButton
         width: 68
         height: 68
-        text: "⚙"
-        font.pixelSize: 32
-        font.family: root.fontFamily
-        contentItem: Text {
-            text: parent.text
-            color: root.textColor
-            font: parent.font
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
+        Accessible.name: "Zmień sesję"
+        contentItem: Item {
+            ActionIcon {
+                anchors.centerIn: parent
+                width: 34
+                height: 34
+                iconName: "settings"
+                iconColor: root.textColor
+            }
         }
         background: Rectangle {
             radius: 15
@@ -64,7 +64,7 @@ Column {
         }
         onClicked: sessionMenu.popup(
             settingsButton,
-            settingsButton.width + 8,
+            settingsButton.width + root.spacing,
             powerButton.height + root.spacing
         )
     }

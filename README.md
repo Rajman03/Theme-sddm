@@ -39,7 +39,8 @@ SDDM from an active desktop session, as that ends the current graphical session.
 
 Edit the color and `timeScale` / `dateScale` values in `theme.conf`. UI sections are separated into
 `components/ThemeBackground.qml`, `components/ClockDisplay.qml`,
-`components/LoginPanel.qml`, and `components/SessionControls.qml`.
+`components/LoginPanel.qml`, `components/SessionControls.qml`, and
+`components/ActionIcon.qml`.
 
 The project layout is intentionally simple:
 

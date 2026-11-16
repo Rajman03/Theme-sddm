@@ -35,9 +35,16 @@
 
   <g transform="translate(34 629)">
     <rect width="48" height="48" rx="14" fill="#dff3ff" stroke="#f5fbff" stroke-width="2"/>
-    <text x="24" y="34" text-anchor="middle" fill="#173d60" font-family="sans-serif" font-size="24">⏻</text>
+    <g fill="none" stroke="#173d60" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2">
+      <path d="M24 5v17"/>
+      <path d="M17 10a11 11 0 1 0 14 0"/>
+    </g>
     <rect y="54" width="48" height="48" rx="14" fill="#dff3ff" stroke="#f5fbff" stroke-width="2"/>
-    <text x="24" y="88" text-anchor="middle" fill="#173d60" font-family="sans-serif" font-size="22">⚙</text>
+    <g fill="none" stroke="#173d60" stroke-linecap="round" stroke-width="2">
+      <circle cx="24" cy="78" r="10"/>
+      <circle cx="24" cy="78" r="3"/>
+      <path d="M24 65v4M24 87v4M11 78h4M33 78h4M15 69l3 3M30 84l3 3M33 69l-3 3M18 84l-3 3"/>
+    </g>
   </g>
   <text x="1332" y="744" text-anchor="end" fill="#173d60" opacity=".55" class="fredoka" font-size="14">SDDM Marble Theme</text>
 </svg>

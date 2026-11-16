@@ -21,19 +21,16 @@ already exist on the computer. Last-user selection is controlled by SDDM's
 From the project directory, run:
 
 ```sh
-sudo ./install.sh
+./install.sh
 ```
 
-The script installs only the theme files (not the Git repository) and selects
-the theme for the next login screen. To install manually:
-
-```ini
-[Theme]
-Current=marble
-```
-
-Save that setting in `/etc/sddm.conf.d/zzzz-marble-theme.conf`. Do not restart
-SDDM from an active desktop session, as that ends the current graphical session.
+The TUI installer requests administrator privileges, detects the configured
+SDDM theme directory, verifies that it is a trusted system directory, installs
+only the theme files, and configures the theme and last-user behavior in a
+dedicated SDDM drop-in. It uses `dialog` or `whiptail` when available and has a
+terminal fallback. It preserves unrelated SDDM config files. The theme is
+selected at the next login screen; do not restart SDDM from an active desktop
+session.
 
 ## Customize
 

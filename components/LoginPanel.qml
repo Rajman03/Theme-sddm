@@ -56,6 +56,8 @@ Column {
                 text: name
                 checkable: true
                 checked: !root.otherUserMode && root.selectedUser === name
+                Accessible.name: name
+                Accessible.description: checked ? "Wybrany użytkownik" : ""
                 font.family: root.fontFamily
                 font.pixelSize: 18
                 onClicked: {
@@ -66,15 +68,18 @@ Column {
                 }
                 background: Rectangle {
                     radius: 16
-                    color: parent.checked ? root.fieldColor : root.accentColor
+                    color: parent.checked ? "#b9e2fa"
+                                          : parent.hovered ? root.fieldColor : root.accentColor
                     opacity: 0.94
-                    border.width: 1
-                    border.color: parent.checked ? root.focusColor : "#f5fbff"
+                    border.width: parent.checked ? 2 : 1
+                    border.color: parent.checked || parent.hovered ? root.focusColor : "#f5fbff"
                 }
                 contentItem: Text {
                     text: parent.text
                     color: root.textColor
-                    font: parent.font
+                    font.family: parent.font.family
+                    font.pixelSize: parent.font.pixelSize
+                    font.bold: parent.checked
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     leftPadding: 14
@@ -85,7 +90,7 @@ Column {
 
         Button {
             visible: root.usersModel && root.usersModel.count > 0
-            text: root.otherUserMode ? "Wróć do kont" : "+ Inne konto"
+            text: root.otherUserMode ? "Wróć do listy użytkowników" : "Wpisz nazwę użytkownika"
             enabled: !root.otherUserMode || !!root.selectedUser
             font.family: root.fontFamily
             font.pixelSize: 16

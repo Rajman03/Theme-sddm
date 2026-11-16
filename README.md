@@ -18,20 +18,39 @@ already exist on the computer. Last-user selection is controlled by SDDM's
 
 ## Install
 
+From the project directory, run:
+
 ```sh
-sudo install -d /usr/share/sddm/themes/marble
-sudo cp -a . /usr/share/sddm/themes/marble/
+sudo ./install.sh
 ```
 
-Set `/etc/sddm.conf.d/10-theme.conf` to:
+The script installs only the theme files (not the Git repository) and selects
+the theme for the next login screen. To install manually:
 
 ```ini
 [Theme]
 Current=marble
 ```
 
-Select the theme on the next login screen. Avoid restarting SDDM from an
-active desktop session, as that ends the current graphical session.
+Save that setting in `/etc/sddm.conf.d/99-marble-theme.conf`. Do not restart
+SDDM from an active desktop session, as that ends the current graphical session.
+
+## Customize
+
+Edit the color and `timeScale` / `dateScale` values in `theme.conf`. UI sections are separated into
+`components/ThemeBackground.qml`, `components/ClockDisplay.qml`,
+`components/LoginPanel.qml`, and `components/SessionControls.qml`.
+
+The project layout is intentionally simple:
+
+```text
+Main.qml             screen layout and SDDM wiring
+theme.conf           theme colors and font settings
+components/           reusable screen components
+FredokaOne.ttf        bundled display font
+install.sh            system install helper
+preview.png           visual preview
+```
 
 ## Preview
 

@@ -17,8 +17,8 @@
   <circle cx="95" cy="785" r="350" fill="#398fc9" opacity=".12"/>
   <circle cx="1160" cy="720" r="160" fill="#eaf8ff" opacity=".2"/>
 
-  <text x="682.5" y="214" text-anchor="middle" fill="#173d60" class="fredoka" font-size="76">17:25</text>
-  <text x="682.5" y="253" text-anchor="middle" fill="#173d60" opacity=".88" class="fredoka" font-size="26">poniedziałek, 16 listopada</text>
+  <text x="682.5" y="214" text-anchor="middle" fill="#173d60" class="fredoka" font-size="96">17:25</text>
+  <text x="682.5" y="253" text-anchor="middle" fill="#173d60" opacity=".88" class="fredoka" font-size="23">poniedziałek, 16 listopada</text>
 
   <g transform="translate(460 345)">
     <rect width="445" height="54" rx="18" fill="#c8eef0" fill-opacity=".92" stroke="#f5fbff" stroke-width="2"/>

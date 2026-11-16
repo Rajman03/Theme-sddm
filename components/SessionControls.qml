@@ -42,6 +42,7 @@ Column {
     }
 
     RoundButton {
+        id: powerButton
         width: 68
         height: 68
         text: "⚙"
@@ -61,7 +62,11 @@ Column {
             border.color: "#f5fbff"
             border.width: 1
         }
-        onClicked: sessionMenu.popup(settingsButton, settingsButton.width + 8, 0)
+        onClicked: sessionMenu.popup(
+            settingsButton,
+            settingsButton.width + 8,
+            powerButton.height + root.spacing
+        )
     }
 
     Menu {
@@ -92,7 +97,7 @@ Column {
                     font.family: root.fontFamily
                     font.pixelSize: 16
                     verticalAlignment: Text.AlignVCenter
-                    leftPadding: 8
+                    leftPadding: 34
                 }
                 background: Rectangle {
                     radius: 8

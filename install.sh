@@ -3,7 +3,7 @@ set -eu
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 SDDM_CONFIG_DIR=/etc/sddm.conf.d
-CONFIG_MARKER="# Managed by SDDM Marble Theme installer"
+CONFIG_FILE=/etc/sddm.conf
 
 if [ "$(id -u)" -ne 0 ]; then
     if command -v sudo >/dev/null 2>&1; then
@@ -130,16 +130,78 @@ is_secure_theme_dir() {
     done
 }
 
-select_config_file() {
-    candidate="$SDDM_CONFIG_DIR/zzzzzzzz-marble-theme.conf"
-    suffix=0
+write_sddm_config() {
+    config_tmp=$(mktemp "$CONFIG_FILE.XXXXXX")
+    config_source=$CONFIG_FILE
+    [ -e "$config_source" ] || config_source=/dev/null
+    cleanup() {
+        if [ -n "${config_tmp:-}" ]; then
+            rm -f "$config_tmp"
+        fi
+    }
+    trap cleanup EXIT
+    trap 'exit 1' HUP INT TERM
 
-    while [ -e "$candidate" ] && ! grep -Fqx "$CONFIG_MARKER" "$candidate"; do
-        suffix=$((suffix + 1))
-        candidate="$SDDM_CONFIG_DIR/zzzzzzzz-marble-theme.z$suffix.conf"
-    done
+    awk -v theme_dir="$theme_dir" '
+        function append_missing() {
+            if (section == "Theme") {
+                if (!current_set) print "Current=marble"
+                if (!theme_dir_set) print "ThemeDir=" theme_dir
+            } else if (section == "Users" && !remember_user_set) {
+                print "RememberLastUser=true"
+            }
+        }
 
-    CONFIG_FILE=$candidate
+        /^[[:space:]]*\[[^]]+\][[:space:]]*$/ {
+            append_missing()
+            section = $0
+            sub(/^[[:space:]]*\[/, "", section)
+            sub(/\][[:space:]]*$/, "", section)
+            if (section == "Theme") theme_section_seen = 1
+            if (section == "Users") users_section_seen = 1
+            print
+            next
+        }
+
+        section == "Theme" && /^[[:space:]]*Current[[:space:]]*=/ {
+            print "Current=marble"
+            current_set = 1
+            next
+        }
+
+        section == "Theme" && /^[[:space:]]*ThemeDir[[:space:]]*=/ {
+            print "ThemeDir=" theme_dir
+            theme_dir_set = 1
+            next
+        }
+
+        section == "Users" && /^[[:space:]]*RememberLastUser[[:space:]]*=/ {
+            print "RememberLastUser=true"
+            remember_user_set = 1
+            next
+        }
+
+        { print }
+
+        END {
+            append_missing()
+            if (!theme_section_seen) {
+                print "[Theme]"
+                print "Current=marble"
+                print "ThemeDir=" theme_dir
+            }
+            if (!users_section_seen) {
+                print "[Users]"
+                print "RememberLastUser=true"
+            }
+        }
+    ' "$config_source" > "$config_tmp"
+
+    chmod 644 "$config_tmp"
+    chown root:root "$config_tmp"
+    mv -f "$config_tmp" "$CONFIG_FILE"
+    config_tmp=
+    trap - EXIT HUP INT TERM
 }
 
 if ! choose_action; then
@@ -167,6 +229,11 @@ case "$theme_dir" in
         ;;
 esac
 
+if printf '%s' "$theme_dir" | LC_ALL=C grep -q '[[:cntrl:]]'; then
+    show_message "Ścieżka katalogu motywów zawiera niedozwolone znaki sterujące."
+    exit 1
+fi
+
 while [ "${theme_dir%/}" != "$theme_dir" ]; do
     theme_dir=${theme_dir%/}
 done
@@ -181,7 +248,7 @@ if ! confirm_install; then
     exit 0
 fi
 
-install -d "$theme_path/components" "$SDDM_CONFIG_DIR"
+install -d -o root -g root -m 755 "$theme_path/components" "$SDDM_CONFIG_DIR"
 
 install -m 644 \
     "$SCRIPT_DIR/Main.qml" \
@@ -194,6 +261,9 @@ install -m 644 \
 for component in "$SCRIPT_DIR"/components/*.qml; do
     install -m 644 "$component" "$theme_path/components/"
 done
+chown -R root:root "$theme_path"
+find "$theme_path" -type d -exec chmod 755 {} +
+find "$theme_path" -type f -exec chmod 644 {} +
 
 if id sddm >/dev/null 2>&1 && command -v runuser >/dev/null 2>&1; then
     if ! runuser -u sddm -- test -r "$theme_path/Main.qml"; then
@@ -205,27 +275,9 @@ Wybierz katalog dostępny do odczytu dla użytkownika sddm."
     fi
 fi
 
-select_config_file
-config_tmp=$(mktemp "$SDDM_CONFIG_DIR/.marble-theme.XXXXXX")
-cleanup() {
-    if [ -n "${config_tmp:-}" ]; then
-        rm -f "$config_tmp"
-    fi
-}
-trap cleanup EXIT
-trap 'exit 1' HUP INT TERM
-
-{
-    printf '%s\n[Theme]\nThemeDir=%s\nCurrent=marble\n\n[Users]\nRememberLastUser=true\n' \
-        "$CONFIG_MARKER" "$theme_dir"
-} > "$config_tmp"
-
-chmod 644 "$config_tmp"
-mv -f "$config_tmp" "$CONFIG_FILE"
-config_tmp=
-trap - EXIT HUP INT TERM
+write_sddm_config
 
 show_message "Zainstalowano w:
 $theme_path
 
-SDDM wybierze motyw Marble i zapamięta ostatniego użytkownika. Motyw będzie aktywny przy następnym ekranie logowania. Nie restartuj SDDM z aktywnej sesji."
+SDDM wybierze motyw Marble i zapamięta ostatniego użytkownika. Ustawienia zapisano w $CONFIG_FILE i będą aktywne przy następnym ekranie logowania. Nie restartuj SDDM z aktywnej sesji."

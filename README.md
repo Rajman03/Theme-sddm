@@ -26,11 +26,11 @@ From the project directory, run:
 
 The TUI installer requests administrator privileges, detects the configured
 SDDM theme directory, verifies that it is a trusted system directory, installs
-only the theme files, and configures the theme and last-user behavior in a
-dedicated SDDM drop-in. It uses `dialog` or `whiptail` when available and has a
-terminal fallback. It preserves unrelated SDDM config files. The theme is
-selected at the next login screen; do not restart SDDM from an active desktop
-session.
+the complete theme (including its QML components), and updates only the
+relevant theme and last-user settings in `/etc/sddm.conf`. It uses `dialog` or
+`whiptail` when available and has a terminal fallback. Other SDDM settings are
+preserved. The theme is selected at the next login screen; do not restart SDDM
+from an active desktop session.
 
 ## Customize
 

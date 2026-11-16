@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1365" height="768" viewBox="0 0 1365 768">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#80D4D9"/>
+      <stop offset="1" stop-color="#80D4D9"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8ffff" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#f8ffff" stop-opacity=".12"/>
+    </linearGradient>
+    <style>
+      .fredoka { font-family: "Fredoka One", "DejaVu Sans", sans-serif; }
+    </style>
+  </defs>
+  <rect width="1365" height="768" fill="url(#bg)"/>
+  <circle cx="1300" cy="45" r="330" fill="#f7fcff" opacity=".22"/>
+  <circle cx="95" cy="785" r="350" fill="#398fc9" opacity=".12"/>
+  <circle cx="1160" cy="720" r="160" fill="#eaf8ff" opacity=".2"/>
+
+  <text x="682.5" y="214" text-anchor="middle" fill="#173d60" class="fredoka" font-size="76">17:25</text>
+  <text x="682.5" y="253" text-anchor="middle" fill="#173d60" opacity=".88" class="fredoka" font-size="26">poniedziałek, 16 listopada</text>
+
+  <g transform="translate(460 345)">
+    <rect width="445" height="54" rx="18" fill="#c8eef0" fill-opacity=".92" stroke="#f5fbff" stroke-width="2"/>
+    <text x="20" y="34" fill="#173d60" opacity=".63" class="fredoka" font-size="17">Nazwa użytkownika</text>
+  </g>
+  <g transform="translate(460 413)">
+    <rect width="445" height="54" rx="18" fill="#eaf7ff" fill-opacity=".94" stroke="#408fc5" stroke-width="2"/>
+    <text x="20" y="34" fill="#173d60" opacity=".63" class="fredoka" font-size="17">Hasło</text>
+    <circle cx="415" cy="27" r="21" fill="#dff3ff"/>
+    <text x="415" y="37" text-anchor="middle" fill="#173d60" font-family="sans-serif" font-size="34">›</text>
+  </g>
+
+  <g transform="translate(34 629)">
+    <rect width="52" height="52" rx="15" fill="#dff3ff" stroke="#f5fbff" stroke-width="2"/>
+    <text x="26" y="37" text-anchor="middle" fill="#173d60" font-family="sans-serif" font-size="26">⏻</text>
+    <rect y="60" width="52" height="52" rx="15" fill="#dff3ff" stroke="#f5fbff" stroke-width="2"/>
+    <text x="26" y="96" text-anchor="middle" fill="#173d60" font-family="sans-serif" font-size="24">⚙</text>
+  </g>
+  <text x="1332" y="744" text-anchor="end" fill="#173d60" opacity=".55" class="fredoka" font-size="14">SDDM Marble Theme</text>
+</svg>

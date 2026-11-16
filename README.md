@@ -32,15 +32,15 @@ the theme for the next login screen. To install manually:
 Current=marble
 ```
 
-Save that setting in `/etc/sddm.conf.d/99-marble-theme.conf`. Do not restart
+Save that setting in `/etc/sddm.conf.d/zzzz-marble-theme.conf`. Do not restart
 SDDM from an active desktop session, as that ends the current graphical session.
 
 ## Customize
 
-Edit the color and `timeScale` / `dateScale` values in `theme.conf`. UI sections are separated into
-`components/ThemeBackground.qml`, `components/ClockDisplay.qml`,
-`components/LoginPanel.qml`, `components/SessionControls.qml`, and
-`components/ActionIcon.qml`.
+Edit the color and `timeScale` / `dateScale` values in `theme.conf`. UI
+sections are separated into `components/ThemeBackground.qml`,
+`components/ClockDisplay.qml`, `components/LoginPanel.qml`,
+`components/SessionControls.qml`, and `components/ActionIcon.qml`.
 
 The project layout is intentionally simple:
 

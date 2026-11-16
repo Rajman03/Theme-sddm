@@ -1,10 +1,9 @@
 [SddmGreeterTheme]
 Name=Marble
-Description=Minimal marble SDDM theme inspired by the provided mockup
+Description=Light turquoise SDDM theme with Fredoka One typography
 Type=sddm-theme
 Version=1.0
 MainScript=Main.qml
 ConfigFile=theme.conf
-TranslationsDirectory=translations
 Theme-Id=marble
 Theme-API=2.0

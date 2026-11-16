@@ -8,7 +8,7 @@ fi
 
 SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 THEME_DIR=/usr/share/sddm/themes/marble
-CONFIG_FILE=/etc/sddm.conf.d/99-marble-theme.conf
+CONFIG_FILE=/etc/sddm.conf.d/zzzz-marble-theme.conf
 
 if [ -e "$CONFIG_FILE" ] && ! grep -q '^Current=marble$' "$CONFIG_FILE"; then
     printf 'Refusing to overwrite existing SDDM config: %s\n' "$CONFIG_FILE" >&2

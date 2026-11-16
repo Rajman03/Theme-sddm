@@ -17,25 +17,27 @@
   <circle cx="95" cy="785" r="350" fill="#398fc9" opacity=".12"/>
   <circle cx="1160" cy="720" r="160" fill="#eaf8ff" opacity=".2"/>
 
-  <text x="682.5" y="214" text-anchor="middle" fill="#173d60" class="fredoka" font-size="96">17:25</text>
-  <text x="682.5" y="253" text-anchor="middle" fill="#173d60" opacity=".88" class="fredoka" font-size="23">poniedziałek, 16 listopada</text>
+  <text x="682.5" y="214" text-anchor="middle" fill="#173d60" class="fredoka" font-size="76">17:25</text>
+  <text x="682.5" y="253" text-anchor="middle" fill="#173d60" opacity=".88" class="fredoka" font-size="24">poniedziałek, 16 listopada</text>
 
-  <g transform="translate(460 345)">
-    <rect width="445" height="54" rx="18" fill="#c8eef0" fill-opacity=".92" stroke="#f5fbff" stroke-width="2"/>
-    <text x="20" y="34" fill="#173d60" opacity=".63" class="fredoka" font-size="17">Nazwa użytkownika</text>
+  <g transform="translate(529 330)">
+    <rect width="70" height="24" rx="12" fill="#eaf7ff" stroke="#408fc5"/>
+    <text x="35" y="16" text-anchor="middle" fill="#173d60" class="fredoka" font-size="12">rajman</text>
+    <rect x="76" width="92" height="24" rx="12" fill="#c8eef0"/>
+    <text x="122" y="16" text-anchor="middle" fill="#173d60" class="fredoka" font-size="11">+ Inne konto</text>
   </g>
-  <g transform="translate(460 413)">
-    <rect width="445" height="54" rx="18" fill="#eaf7ff" fill-opacity=".94" stroke="#408fc5" stroke-width="2"/>
-    <text x="20" y="34" fill="#173d60" opacity=".63" class="fredoka" font-size="17">Hasło</text>
-    <circle cx="415" cy="27" r="21" fill="#dff3ff"/>
-    <text x="415" y="37" text-anchor="middle" fill="#173d60" font-family="sans-serif" font-size="34">›</text>
+  <g transform="translate(508.5 362)">
+    <rect width="348" height="48" rx="17" fill="#eaf7ff" fill-opacity=".94" stroke="#408fc5" stroke-width="2"/>
+    <text x="16" y="30" fill="#173d60" opacity=".63" class="fredoka" font-size="15">Hasło</text>
+    <circle cx="321" cy="24" r="19" fill="#dff3ff"/>
+    <text x="321" y="34" text-anchor="middle" fill="#173d60" font-family="sans-serif" font-size="30">›</text>
   </g>
 
   <g transform="translate(34 629)">
-    <rect width="52" height="52" rx="15" fill="#dff3ff" stroke="#f5fbff" stroke-width="2"/>
-    <text x="26" y="37" text-anchor="middle" fill="#173d60" font-family="sans-serif" font-size="26">⏻</text>
-    <rect y="60" width="52" height="52" rx="15" fill="#dff3ff" stroke="#f5fbff" stroke-width="2"/>
-    <text x="26" y="96" text-anchor="middle" fill="#173d60" font-family="sans-serif" font-size="24">⚙</text>
+    <rect width="48" height="48" rx="14" fill="#dff3ff" stroke="#f5fbff" stroke-width="2"/>
+    <text x="24" y="34" text-anchor="middle" fill="#173d60" font-family="sans-serif" font-size="24">⏻</text>
+    <rect y="54" width="48" height="48" rx="14" fill="#dff3ff" stroke="#f5fbff" stroke-width="2"/>
+    <text x="24" y="88" text-anchor="middle" fill="#173d60" font-family="sans-serif" font-size="22">⚙</text>
   </g>
   <text x="1332" y="744" text-anchor="end" fill="#173d60" opacity=".55" class="fredoka" font-size="14">SDDM Marble Theme</text>
 </svg>

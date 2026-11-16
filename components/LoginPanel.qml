@@ -57,7 +57,7 @@ Column {
                 checkable: true
                 checked: !root.otherUserMode && root.selectedUser === name
                 font.family: root.fontFamily
-                font.pixelSize: 16
+                font.pixelSize: 18
                 onClicked: {
                     root.selectedUser = name
                     root.otherUserMode = false
@@ -88,7 +88,7 @@ Column {
             text: root.otherUserMode ? "Wróć do kont" : "+ Inne konto"
             enabled: !root.otherUserMode || !!root.selectedUser
             font.family: root.fontFamily
-            font.pixelSize: 15
+            font.pixelSize: 16
             onClicked: {
                 if (root.otherUserMode) {
                     root.otherUserMode = false
@@ -121,7 +121,7 @@ Column {
     TextField {
         id: usernameInput
         width: parent.width
-        height: 54
+        height: 68
         visible: root.otherUserMode
         placeholderText: "Nazwa użytkownika"
         color: root.textColor
@@ -141,8 +141,8 @@ Column {
     Rectangle {
         id: passwordBox
         width: parent.width
-        height: 54
-        radius: 18
+        height: 68
+        radius: 24
         color: root.fieldColor
         opacity: 0.9
         border.width: 1
@@ -151,8 +151,8 @@ Column {
         TextField {
             id: passwordInput
             anchors.fill: parent
-            anchors.rightMargin: 54
-            leftPadding: 20
+            anchors.rightMargin: 64
+            leftPadding: 24
             placeholderText: "Hasło"
             echoMode: TextInput.Password
             color: root.textColor
@@ -163,14 +163,14 @@ Column {
         }
 
         RoundButton {
-            width: 42
-            height: 42
+            width: 50
+            height: 50
             anchors.right: parent.right
-            anchors.rightMargin: 6
+            anchors.rightMargin: 8
             anchors.verticalCenter: parent.verticalCenter
             text: "›"
             font.family: "Noto Sans"
-            font.pixelSize: 30
+            font.pixelSize: 36
             font.weight: Font.Bold
             contentItem: Text {
                 text: parent.text

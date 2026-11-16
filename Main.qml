@@ -17,7 +17,7 @@ Rectangle {
     property color darkShapeColor: config.darkShapeColor || "#398fc9"
     property string displayFont: fredoka.status === FontLoader.Ready ? fredoka.name : "Noto Sans"
     property int sessionIndex: sessionModel.lastIndex >= 0 ? sessionModel.lastIndex : 0
-    property real timeScale: Number(config.timeScale) || 1.25
+    property real timeScale: Number(config.timeScale) || 0.8
     property real dateScale: Number(config.dateScale) || 0.9
 
     FontLoader {
@@ -36,6 +36,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: root.height * 0.205
+        availableHeight: root.height
         textColor: root.inkColor
         fontFamily: root.displayFont
         timeScale: root.timeScale
@@ -44,7 +45,7 @@ Rectangle {
 
     LoginPanel {
         id: loginPanel
-        width: Math.min(430, root.width * 0.82)
+        width: Math.min(490, root.width * 0.82)
         anchors.horizontalCenter: parent.horizontalCenter
         y: root.height * 0.43
         usersModel: userModel
@@ -63,8 +64,8 @@ Rectangle {
     SessionControls {
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        anchors.leftMargin: 34
-        anchors.bottomMargin: 34
+        anchors.leftMargin: 48
+        anchors.bottomMargin: 48
         sessionsModel: sessionModel
         sessionIndex: root.sessionIndex
         textColor: root.inkColor

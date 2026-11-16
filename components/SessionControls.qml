@@ -17,11 +17,12 @@ Column {
     spacing: 8
 
     RoundButton {
-        width: 52
-        height: 52
+        id: settingsButton
+        width: 68
+        height: 68
         enabled: root.powerOffEnabled
         text: "⏻"
-        font.pixelSize: 25
+        font.pixelSize: 36
         font.family: "Noto Sans"
         contentItem: Text {
             text: parent.text
@@ -41,10 +42,10 @@ Column {
     }
 
     RoundButton {
-        width: 52
-        height: 52
+        width: 68
+        height: 68
         text: "⚙"
-        font.pixelSize: 23
+        font.pixelSize: 32
         font.family: root.fontFamily
         contentItem: Text {
             text: parent.text
@@ -60,11 +61,23 @@ Column {
             border.color: "#f5fbff"
             border.width: 1
         }
-        onClicked: sessionMenu.open()
+        onClicked: sessionMenu.popup(settingsButton, settingsButton.width + 8, 0)
     }
 
     Menu {
         id: sessionMenu
+        palette.window: root.buttonColor
+        palette.text: root.textColor
+        palette.highlight: "#b9e2fa"
+        palette.highlightedText: root.textColor
+
+        background: Rectangle {
+            implicitWidth: 180
+            radius: 12
+            color: root.buttonColor
+            border.color: "#f5fbff"
+            border.width: 1
+        }
 
         Repeater {
             model: root.sessionsModel
@@ -73,6 +86,18 @@ Column {
                 text: model.name
                 checkable: true
                 checked: index === root.sessionIndex
+                contentItem: Text {
+                    text: parent.text
+                    color: root.textColor
+                    font.family: root.fontFamily
+                    font.pixelSize: 16
+                    verticalAlignment: Text.AlignVCenter
+                    leftPadding: 8
+                }
+                background: Rectangle {
+                    radius: 8
+                    color: parent.highlighted ? "#b9e2fa" : "transparent"
+                }
                 onTriggered: root.sessionSelected(index)
             }
         }

@@ -5,10 +5,11 @@ Column {
 
     property color textColor: "#173d60"
     property string fontFamily: "Noto Sans"
+    property real availableHeight: 768
     property real timeScale: 1.25
     property real dateScale: 0.9
-    property int timeFontSize: Math.min(100, Math.max(36, Screen.height * 0.095)) * timeScale
-    property int dateFontSize: Math.min(27, Math.max(16, Screen.height * 0.035)) * dateScale
+    property int timeFontSize: Math.min(120, Math.max(48, availableHeight * 0.14)) * timeScale
+    property int dateFontSize: Math.min(28, Math.max(20, availableHeight * 0.035)) * dateScale
     spacing: 5
 
     function polishDate(dateValue) {

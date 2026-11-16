@@ -65,7 +65,7 @@ Column {
         onClicked: sessionMenu.popup(
             settingsButton,
             settingsButton.width + root.spacing,
-            powerButton.height + root.spacing
+            Math.max(0, (settingsButton.height - sessionMenu.implicitHeight) / 2)
         )
     }
 
@@ -89,6 +89,7 @@ Column {
 
             MenuItem {
                 text: model.name
+                implicitHeight: 44
                 checkable: true
                 checked: index === root.sessionIndex
                 contentItem: Text {

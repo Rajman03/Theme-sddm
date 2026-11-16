@@ -40,7 +40,7 @@ illustration of the theme, not a screenshot of the greeter.
 
 ## License
 
-Theme files: GPL-3.0-or-later.
+Theme files: MIT; see [`LICENSE`](LICENSE).
 
 Fredoka One is distributed under the SIL Open Font License; see
 [`OFL.txt`](OFL.txt).
